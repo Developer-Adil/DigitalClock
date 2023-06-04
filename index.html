@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+
+    <div class="hero">
+
+        <div class="container">
+            <div class="clock">
+                <span id="hrs">00</span>
+                <span id="colon">:</span>
+                <span id="min">00</span>
+                <span id="colon">:</span>
+                <span id="sec">00</span>
+                <span id="ampm"></span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function updateTime() {
+            let currentTime = new Date();
+
+            let hours = currentTime.getHours();
+            let minutes = currentTime.getMinutes();
+            let seconds = currentTime.getSeconds();
+
+            let ampm = hours >= 12 ? ' PM' : ' AM';
+
+            hours = hours % 12;
+            hours = hours ? hours : 12; // Convert 0 to 12
+
+            let hrsElement = document.getElementById('hrs');
+            let minElement = document.getElementById('min');
+            let secElement = document.getElementById('sec');
+            let ampmElement = document.getElementById('ampm');
+
+            hrsElement.textContent = (hours < 10 ? '0' : '') + hours;
+            minElement.textContent = (minutes < 10 ? '0' : '') + minutes;
+            secElement.textContent = (seconds < 10 ? '0' : '') + seconds;
+            ampmElement.textContent = ampm;
+        }
+
+        updateTime(); // Call updateTime initially
+
+        setInterval(updateTime, 1000); // Update time every second
+    </script>
+</body>
+
+</html>

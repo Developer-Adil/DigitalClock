@@ -1,0 +1,168 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.hero {
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(45deg, #07151e, #033323);
+    color: #fff;
+    position: relative;
+}
+
+.container {
+    width: 800px;
+    height: 180px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.clock {
+    width: 100%;
+    height: 100%;
+    background: rgba(70, 3, 3, 0.1);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(40px);
+}
+
+.container::before {
+    content: "";
+    width: 180px;
+    height: 180px;
+    background: #ff006a;
+    border-radius: 5px;
+    position: absolute;
+    left: -50px;
+    top: -50px;
+    z-index: -1;
+    box-shadow: 1rem 1rem 15rem darkturquoise;
+}
+
+.container::after {
+    content: "";
+    width: 180px;
+    height: 180px;
+    background: cyan;
+    border-radius: 5px;
+    position: absolute;
+    right: -50px;
+    bottom: -50px;
+    border-radius: 50%;
+    z-index: -1;
+    box-shadow: 1rem 1rem 35rem rgb(255, 255, 255);
+}
+
+.clock span {
+    width: 110px;
+    font-size: 80px;
+    display: inline-block;
+    position: relative;
+    text-align: center;
+    text-shadow: 5px 5px 20px black;
+    font-weight: 500;
+}
+
+.clock span::after {
+    content: '';
+    font-size: 16px;
+    font-weight: 600;
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#colon {
+    color: #00ffff;
+    filter: drop-shadow(12px 12px 30px rgb(255, 255, 255));
+}
+
+#hrs::after {
+    content: 'HOURS';
+}
+
+#min::after {
+    content: 'MINUTES';
+}
+
+#sec::after {
+    content: 'SECONDS';
+}
+
+#ampm {
+    font-size: 3rem;
+    font-weight: 800;
+    text-shadow: 5px 5px 20px black;
+}
+
+@media (max-width: 910px) {
+    .container {
+        max-width: 600px;
+    }
+    .clock span {
+        font-size: 50px;
+    }
+    #ampm {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 715px) {
+    .container {
+        max-width: 300px;
+        min-height: 70vh;
+    }
+    .clock {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    .clock span {
+        font-size: 40px;
+    }
+    .clock span::after {
+        font-size: 14px;
+    }
+    #ampm {
+        position: absolute;
+        right: 10px;
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 407px) {
+    .container {
+        max-width: 200px;
+        min-height: 70vh;
+    }
+    .container::after {
+        width: 150px;
+        height: 150px;
+    }
+    .container::before {
+        width: 150px;
+        height: 150px;
+    }
+    .clock {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    .clock span {
+        font-size: 40px;
+    }
+    .clock span::after {
+        font-size: 12px;
+    }
+    #ampm {
+        position: absolute;
+        right: -17px;
+        font-size: 1.8rem;
+    }
+}
